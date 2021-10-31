@@ -41,11 +41,15 @@
   
 
   <script>
-    let body = document.getElementsByTagName('body')[0]
+    let body = document.documentElement
     let show = document.getElementById('show')
     let button = document.getElementById('fullscreen')
     button.addEventListener('click', function() {
-      body.requestFullscreen()
+      if (document.fullscreenElement) {
+          document.exitFullscreen();
+      } else {
+          body.requestFullscreen()
+      }
     })
 
     window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', function () {
